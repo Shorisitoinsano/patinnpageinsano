@@ -1,6 +1,6 @@
 # Patinn
 
-Sitio personal de Patinn, ilustradora: un autorretrato en cinco páginas con gustos, rutinas, un diario y contacto. Estética Y2K editorial: papel, tinta, azul cobalto, grano y tramas de puntos.
+Sitio personal de Patinn, ilustrador: un autorretrato en cinco páginas con gustos, rutinas, un diario y contacto. Estética Y2K editorial: papel, tinta, azul cobalto, grano y tramas de puntos.
 
 Hecho con **Astro**, **Tailwind CSS** y **Alpine.js**. Es un sitio estático: no tiene servidor ni base de datos.
 
