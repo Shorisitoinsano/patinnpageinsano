@@ -1,0 +1,12 @@
+---
+import T from '../ui/T.astro';
+import type { Bi } from '../../data/types';
+/** Etiqueta + control (slot) + mensaje de error, conectados al estado "e" del formulario Alpine. */
+interface Props { id: string; label: Bi }
+const { id, label } = Astro.props;
+---
+<div>
+  <label for={id} class="lbl mb-2 block"><T {...label} /></label>
+  <slot />
+  <p x-show={`e.${id}`} x-cloak class="lbl mt-2 text-deep" role="alert" id={`${id}-err`}><T es="Revisa este campo." en="Check this field." /></p>
+</div>

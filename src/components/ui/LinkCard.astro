@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import T from './T.astro';
+/** Enlace con icono, etiqueta y valor (Inicio y Contacto). */
+interface Props { href: string; icon?: string; es: string; en: string; value: string }
+const { href, icon = 'star4', es, en, value } = Astro.props;
+---
+<a href={href} class="lnk"><span class="lbg"></span><span class="lic glow"><Icon name={icon} /></span><span class="lbl lt lnk-text"><b><T es={es} en={en} /></b><span class="truncate opacity-70">{value}</span></span></a>

@@ -1,0 +1,30 @@
+---
+import T from '../ui/T.astro';
+import { pages, pageByKey, mainNav } from '../../data/site';
+/** Cabecera fija: logo, menú con desplegable, idioma, tema y menú móvil. Todo sale de data/site.ts. */
+---
+<header class="sticky top-0 z-40 border-b-2 border-ink bg-paper" x-data="{ open: false, dd: false }" x-on:keydown.escape.window="open = false; dd = false" x-on:nav-done.window="open = false; dd = false">
+<div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+<a href="/" class="disp text-2xl italic" aria-label="Patinn, inicio">Patinn</a>
+<nav aria-label="Principal" class="hidden md:block"><ul class="nav-list lbl relative flex items-center gap-7">
+{mainNav.map((item) => 'children' in item ? (
+  <li class="relative" data-nav={item.children.map((c) => c.key).join(' ')} x-on:click.outside="dd = false">
+    <button type="button" class="navl lbl flex items-center gap-1 py-2 hover:text-link" aria-haspopup="true" x-bind:aria-expanded="dd" aria-controls="dd-menu" x-on:click="dd = !dd"><T {...item.label} /> <span aria-hidden="true" x-bind:class="dd && 'rotate-180'" class="inline-block transition-transform">▾</span></button>
+    <ul id="dd-menu" x-show="dd" x-cloak x-transition.opacity class="absolute left-0 top-full mt-2 w-48 border-2 border-ink bg-paper p-2 shadow-[4px_4px_0_var(--ink)]">
+      {item.children.map((c) => <li><a href={pageByKey[c.key].href} class="navl block px-3 py-2 hover:bg-cobalt hover:text-onblue"><T {...c.label} /></a></li>)}
+    </ul>
+  </li>
+) : (
+  <li data-nav={item.key}><a href={pageByKey[item.key].href} class="navl block py-2 hover:text-link"><T {...pageByKey[item.key].nav} /></a></li>
+))}
+<li class="nav-ind pointer-events-none absolute -bottom-[10px] left-0 h-[3px] w-[100px] list-none bg-cobalt opacity-0" aria-hidden="true"></li></ul></nav>
+<div class="flex items-center gap-2">
+<button type="button" data-lang-toggle class="lbl grid h-11 min-w-11 place-items-center border-2 border-ink px-2 font-bold hover:bg-cobalt hover:text-onblue" data-al-es="Cambiar idioma" data-al-en="Switch language" aria-label="Cambiar idioma"><span data-cur>EN</span></button>
+<button type="button" data-theme-toggle aria-pressed="false" aria-label="Cambiar tema" class="grid h-11 w-11 place-items-center border-2 border-ink bg-paper text-ink"><svg class="ico-light" viewBox="0 0 24 24" width="26" height="26"><use href="#star4"></use></svg>
+<svg class="ico-dark" viewBox="0 0 24 24" width="30" height="30"><defs><mask id="cresm"><rect width="24" height="24" fill="#fff"></rect><circle cx="15.4" cy="8.4" r="7.6" fill="#000"></circle></mask></defs><circle cx="10.4" cy="13.6" r="8.6" mask="url(#cresm)" fill="currentColor"></circle><use href="#star4" x="14" y="1.6" width="9.4" height="9.4"></use><use href="#star4" x="2.4" y="2.4" width="4.4" height="4.4"></use></svg></button>
+<button type="button" class="grid h-11 w-11 place-items-center border-2 border-ink md:hidden" x-bind:aria-expanded="open" aria-controls="m-menu" aria-label="Menú" x-on:click="open = !open"><span class="lbl text-lg" x-text="open ? '✕' : '☰'">☰</span></button>
+</div>
+</div>
+<nav id="m-menu" x-show="open" x-cloak aria-label="Móvil" class="border-t-2 border-ink bg-paper md:hidden"><ul class="lbl mx-auto max-w-6xl px-4 py-2">
+{pages.map((p) => <li class="border-b border-ink last:border-0"><a href={p.href} class="navl nav-m"><T {...p.nav} /><span aria-hidden="true">→</span></a></li>)}
+</ul></nav></header>

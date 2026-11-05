@@ -1,0 +1,7 @@
+---
+import T from '../ui/T.astro';
+import type { Bi } from '../../data/types';
+interface Props { tone: string; kanji: string; title: Bi; text: Bi }
+const { tone, kanji, title, text } = Astro.props;
+---
+<li class:list={['rv relative min-h-56 overflow-hidden border-2 border-ink p-6', tone]}><span class="ht ht-layer" aria-hidden="true"></span><span class="kanji" aria-hidden="true">{kanji}</span><h2 class="disp relative text-3xl leading-none"><T {...title} /></h2><p class="relative mt-4"><T {...text} /></p></li>

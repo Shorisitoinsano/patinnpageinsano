@@ -1,0 +1,6 @@
+---
+import T from './T.astro';
+interface Props { id?: string; es: string; en: string; class?: string }
+const { id, es, en, class: cls } = Astro.props;
+---
+<h2 id={id} class:list={['disp text-[clamp(30px,5vw,56px)]', cls]}><T es={es} en={en} /></h2>

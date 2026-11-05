@@ -1,0 +1,48 @@
+---
+// Fuentes locales (npm @fontsource): se empaquetan en el build, sin depender de Google Fonts ni de internet.
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/500.css';
+import '@fontsource/libre-bodoni/400.css';
+import '@fontsource/libre-bodoni/700.css';
+import '@fontsource/libre-bodoni/400-italic.css';
+import '@fontsource/libre-bodoni/700-italic.css';
+import '@fontsource/noto-serif-jp/400.css';
+import '@fontsource/noto-serif-jp/700.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+import '../styles/global.css';
+import SvgSprite from '../components/layout/SvgSprite.astro';
+import BgFx from '../components/layout/BgFx.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import T from '../components/ui/T.astro';
+import { pageByKey, type PageKey } from '../data/site';
+
+interface Props { page: PageKey }
+const { page } = Astro.props;
+const p = pageByKey[page];
+---
+<!DOCTYPE html>
+<html lang="es" data-title-es={p.docTitle.es} data-title-en={p.docTitle.en}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{p.docTitle.es}</title>
+<meta name="description" content={p.description}>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- Tema e idioma antes de pintar, para evitar parpadeo -->
+<script is:inline>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;var l;try{l=localStorage.getItem('lang')}catch(e){}if(l!=='en'&&l!=='es')l=(navigator.language||'es').slice(0,2)==='en'?'en':'es';document.documentElement.lang=l;})();</script>
+{page === 'index' && <link rel="preload" as="script" href="/js/decor.js">}
+</head>
+<body class="font-body">
+<a href="#main" class="skip lbl"><T es="Saltar al contenido" en="Skip to content" /></a>
+<BgFx />
+<SvgSprite />
+<div class="site">
+<Header />
+<main id="main" tabindex="-1" class="outline-none"><slot /></main>
+<Footer />
+</div>
+<script>import '../scripts/app.js';</script>
+</body>
+</html>

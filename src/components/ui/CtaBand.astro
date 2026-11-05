@@ -1,0 +1,12 @@
+---
+import T from './T.astro';
+import type { Bi } from '../../data/types';
+interface Props { text: Bi; cta: Bi; href: string }
+const { text, cta, href } = Astro.props;
+---
+<section class="cv border-y-2 border-ink bg-cobalt px-4 py-16 text-onblue">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6">
+    <p class="disp text-[clamp(28px,4.5vw,52px)] leading-none"><T {...text} /></p>
+    <a href={href} class="btn btn-ghost"><T {...cta} /> →</a>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/ui/PageIntro.astro';
+import DiaryCard from '../components/diario/DiaryCard.astro';
+import DiaryModal from '../components/diario/DiaryModal.astro';
+import { diary } from '../data/diary';
+---
+<BaseLayout page="diario">
+  <PageIntro page="diario" />
+  <section class="cv mx-auto max-w-6xl px-4 py-14" x-data="diary()" x-on:keydown.escape.window="hide()">
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {diary.map((entry) => <li class="rv"><DiaryCard entry={entry} /></li>)}
+    </ul>
+    {diary.map((entry, i) => <DiaryModal entry={entry} index={i} />)}
+  </section>
+</BaseLayout>

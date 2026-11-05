@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/ui/PageIntro.astro';
+import SectionTitle from '../components/ui/SectionTitle.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import T from '../components/ui/T.astro';
+import Retrato from '../components/sobre-mi/Retrato.astro';
+import { routine, routineNote } from '../data/routine';
+---
+<BaseLayout page="sobre-mi">
+  <PageIntro page="sobre-mi" />
+  <Retrato />
+  <section class="cv mx-auto max-w-6xl px-4 py-24" aria-labelledby="dia">
+    <SectionTitle id="dia" es="Un día cualquiera" en="An ordinary day" />
+    <p class="lbl mt-3"><T {...routineNote} /></p>
+    <ol class="mt-10 grid gap-0 border-2 border-ink">
+      {routine.map((r, i) => (
+        <li class:list={['rv grid grid-cols-[5.5rem_1fr] items-center gap-4 border-b border-ink p-4 last:border-b-0', { 'bg-paper2': i % 2 === 1 }]}><span class="lbl font-bold text-link">{r.time}</span><span><T {...r.text} /></span></li>
+      ))}
+    </ol>
+  </section>
+  <CtaBand href="/gustos" text={{ es: '¿Quieres saber qué escucho?', en: 'Want to know what I listen to?' }} cta={{ es: 'Ver mis gustos', en: 'See my likes' }} />
+</BaseLayout>

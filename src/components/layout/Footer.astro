@@ -1,0 +1,13 @@
+---
+import T from '../ui/T.astro';
+import { pages } from '../../data/site';
+---
+<footer class="cv border-t-2 border-ink bg-paper" data-pause>
+<div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.2fr_1fr_auto]">
+<div><p class="disp text-5xl italic md:text-6xl">Patinn</p><p class="lbl mt-3">Illustrator</p>
+<p class="mt-4 max-w-sm text-[15px]"><T es="Un rincón de internet para contar qué me gusta, qué dibujo y por qué." en="A corner of the internet to say what I like, what I draw and why." /></p></div>
+<nav aria-label="Pie de página"><ul class="lbl grid gap-0">
+{pages.map((p) => <li><a class="inline-flex min-h-11 items-center hover:text-link" href={p.href}><T {...p.nav} /></a></li>)}
+</ul></nav>
+<div class="lbl h-28 w-28 overflow-hidden leading-7" aria-hidden="true"><div class="colup"><div>AÚN NO.<br>SEÑAL INCOMPLETA<br>ESPERA…<br>NO CIERRES.</div><div>AÚN NO.<br>SEÑAL INCOMPLETA<br>ESPERA…<br>NO CIERRES.</div></div></div></div>
+<div class="border-t border-ink px-4 py-4"><p class="lbl mx-auto flex max-w-6xl flex-wrap justify-between gap-2"><span>© 2026 Patinn</span><span><T es="Fin de transmisión" en="End of transmission" /> · 通信終了</span></p></div></footer>

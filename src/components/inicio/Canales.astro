@@ -1,0 +1,14 @@
+---
+import T from '../ui/T.astro';
+import Icon from '../ui/Icon.astro';
+import LinkCard from '../ui/LinkCard.astro';
+---
+<section class="cv relative overflow-hidden border-y-2 border-ink bg-paper2 px-4 py-20" data-pause aria-labelledby="canales">
+<div class="mx-auto max-w-xl"><p class="lbl mb-6 text-center" data-scr="— Canales abiertos —" data-scr-once>— Canales abiertos —</p>
+<h2 id="canales" class="sr-only"><T es="Canales abiertos" en="Open channels" /></h2>
+<ul class="grid gap-4">
+<li><LinkCard href="/sobre-mi" es="Sobre mí" en="About me" value="/yo" /></li><li><LinkCard href="/gustos" es="Gustos" en="Likes" value="/lo-que-suena" /></li><li><LinkCard href="/diario" es="Diario" en="Journal" value="/notas" /></li><li><LinkCard href="/contacto" es="Contacto" en="Contact" value="/escríbeme" /></li></ul>
+<div class="relative mt-14 h-40"><div class="sealw" data-n="0"><svg class="w-full h-full overflow-visible" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="sealp" d="M80 80m-58 0a58 58 0 1 1 116 0a58 58 0 1 1 -116 0"></path></defs><circle cx="80" cy="80" r="74" fill="none" stroke="var(--ink)" stroke-width="1"></circle><circle cx="80" cy="80" r="40" fill="none" stroke="var(--ink)" stroke-width="1" stroke-dasharray="1 5" stroke-linecap="round"></circle><g class="rot40"><text data-ring="364" font-family="Space Mono, Noto Serif JP, monospace" font-size="10" letter-spacing="1" fill="var(--ink)"><textPath href="#sealp">夜の信号 ✶ SEÑAL NOCTURNA ✶ 夜の信号 ✶ SEÑAL NOCTURNA ✶ </textPath></text></g><circle class="sd sd1 [fill:var(--blue)]" cx="68" cy="108" r="2.4"></circle><circle class="sd sd2 [fill:var(--blue)]" cx="80" cy="110" r="2.4"></circle><circle class="sd sd3 [fill:var(--blue)]" cx="92" cy="108" r="2.4"></circle></svg><button type="button" class="seal" data-seal aria-label="Decodificar señal, clic 0 de 3"><Icon name="star4" size={30} class="sst" /></button></div></div>
+<figure class="asc" data-asc role="img" aria-label="Retrato en ASCII, decodificado"><div class="fr"><pre class="pn" aria-hidden="true"></pre><pre class="pf" aria-hidden="true"></pre></div><figcaption class="lbl cap" aria-live="polite"></figcaption></figure>
+</div>
+<svg class="tw  hidden md:block absolute pointer-events-none text-link left-[9%] top-[14%] w-[40px] h-[40px]" viewBox="0 0 24 24" aria-hidden="true"><use href="#star4"></use></svg><svg class="tw tw-b hidden md:block absolute pointer-events-none text-ink right-[10%] top-[10%] w-[22px] h-[22px]" viewBox="0 0 24 24" aria-hidden="true"><use href="#spark"></use></svg></section>

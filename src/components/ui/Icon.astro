@@ -1,0 +1,6 @@
+---
+/** Icono del sprite SVG (ver layout/SvgSprite.astro). */
+interface Props { name: string; size?: number; class?: string }
+const { name, size = 24, class: cls } = Astro.props;
+---
+<svg class={cls} viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"><use href={`#${name}`}></use></svg>

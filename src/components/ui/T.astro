@@ -1,0 +1,6 @@
+---
+/** Texto bilingüe. Renderiza el español; js de idioma lo cambia a inglés con data-en. */
+interface Props { es: string; en: string }
+const { es, en } = Astro.props;
+---
+<span data-es={es} data-en={en}>{es}</span>

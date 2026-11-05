@@ -1,0 +1,29 @@
+---
+import T from '../ui/T.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import type { Bi } from '../../data/types';
+/** Carrusel con flechas, puntos y teclado (Alpine "carousel"). */
+interface Props { slides: Array<{ tone: string; word: Bi }> }
+const { slides } = Astro.props;
+const n = slides.length;
+---
+<section class="cv mx-auto max-w-6xl px-4 pb-20" aria-labelledby="arch" x-data={`carousel(${n})`} x-on:keydown.arrow-right="next()" x-on:keydown.arrow-left="prev()">
+  <div class="mb-6 flex items-end justify-between gap-4"><div><SectionTitle id="arch" es="Archivo visual" en="Visual archive" /><p class="lbl mt-2"><T es="(demo demostrativa para dejar imágenes, tipo portafolio)" en="(demo space for images, portfolio style)" /></p></div><p class="lbl" aria-live="polite"><span x-text="i + 1">1</span> / <span x-text="n">{n}</span></p></div>
+  <div role="region" aria-roledescription="carrusel" aria-label="Archivo visual" class="relative overflow-hidden border-2 border-ink">
+    <div class="flex transition-transform duration-500 ease-out" x-bind:style="'transform:translateX(-' + (i * 100) + '%)'">
+      {slides.map((s, k) => (
+        <figure class:list={['relative aspect-[4/3] w-full shrink-0 sm:aspect-[16/8]', s.tone]} role="group" aria-roledescription="diapositiva" aria-label={`${k + 1} / ${n}`} x-bind:aria-hidden={`i !== ${k}`}>
+          <span class="ht ht-layer" aria-hidden="true"></span>
+          <span class="disp slide-title"><T {...s.word} /></span>
+          <figcaption class="lbl absolute bottom-4 left-6">[ <T es="ilustración · placeholder" en="illustration · placeholder" /> {String(k + 1).padStart(2, '0')} ]</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+    <div class="flex gap-2"><button type="button" class="btn btn-ghost" x-on:click="prev()" aria-label="Anterior">←</button><button type="button" class="btn" x-on:click="next()" aria-label="Siguiente">→</button></div>
+    <div class="flex gap-1" role="group" aria-label="Elegir diapositiva">
+      {slides.map((_, k) => <button type="button" class="dot-btn" x-on:click={`go(${k})`} x-bind:aria-current={`i === ${k}`} aria-label={`${k + 1}`}><span class="dot" x-bind:class={`i === ${k} ? 'w-6 bg-cobalt' : 'w-3'`}></span></button>)}
+    </div>
+  </div>
+</section>

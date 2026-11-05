@@ -1,0 +1,11 @@
+---
+import T from '../ui/T.astro';
+import type { Bi } from '../../data/types';
+/** Pregunta del acordeón (Alpine "faq" + plugin collapse). */
+interface Props { q: Bi; a: Bi; index: number }
+const { q, a, index: i } = Astro.props;
+---
+<div class="border-b border-ink last:border-0">
+  <h3><button type="button" class="faq-btn" x-bind:aria-expanded={`open === ${i}`} aria-controls={`f${i}`} x-on:click={`toggle(${i})`}><T {...q} /><span aria-hidden="true" class="lbl text-lg" x-text={`open === ${i} ? '−' : '+'`}>+</span></button></h3>
+  <div id={`f${i}`} x-show={`open === ${i}`} x-collapse x-cloak><p class="px-4 pb-4"><T {...a} /></p></div>
+</div>

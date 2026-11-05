@@ -1,0 +1,12 @@
+---
+import T from '../ui/T.astro';
+import type { DiaryEntry } from '../../data/diary';
+interface Props { entry: DiaryEntry }
+const { entry } = Astro.props;
+---
+<button type="button" class:list={[entry.alt ? 'cut2' : 'cut', 'group entry-card']} aria-haspopup="dialog" x-on:click={`show('${entry.id}', $el)`}>
+  <span class="lbl flex justify-between"><span>{entry.date}</span><span class="bg-cobalt px-2 text-onblue"><T {...entry.tag} /></span></span>
+  <span class="disp entry-title"><T {...entry.title} /></span>
+  <span class="mt-4 block text-[15px]"><T {...entry.excerpt} /></span>
+  <span class="lbl mt-6 block group-hover:text-link"><T es="Leer" en="Read" /> →</span>
+</button>

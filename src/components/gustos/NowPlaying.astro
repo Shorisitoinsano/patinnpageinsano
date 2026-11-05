@@ -1,0 +1,10 @@
+---
+import T from '../ui/T.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+/** Reproductor "Lo que suena": lo controla initMusic() en scripts/app.js. */
+---
+<section class="cv border-y-2 border-ink bg-paper2 px-4 py-16" aria-labelledby="suena" data-pause><div class="mx-auto max-w-xl"><SectionTitle id="suena" es="Lo que suena" en="Now playing" class="mb-6" />
+<div class="mp" data-mp data-on="0" role="group" aria-label="Reproductor: Every Note, Mystery Skulls"><div class="mpc"><img src="https://i.ytimg.com/vi/pjTzl9ZY_kM/mqdefault.jpg" alt="Portada de Every Note" width="320" height="180" loading="lazy" referrerpolicy="no-referrer"></div>
+<div class="mpi"><div><div class="lbl flex justify-between gap-3 opacity-80">♪ <span class="mps">cargando…</span><span class="mpt ml-auto">00:00 / 05:08</span></div><div class="disp mt-1 text-3xl normal-case italic leading-none">Every Note</div><div class="lbl mt-1">Mystery Skulls</div><p class="mt-2 text-[14px] italic"><T es="qué horrible final tuvo Mystery Skulls" en="what a horrible ending Mystery Skulls had" /></p></div>
+<div class="mpr"><button type="button" class="mpb" aria-label="Reproducir">▶</button><div class="vs" role="slider" tabindex="0" aria-label="Volumen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><div class="vf"></div><div class="vh"></div></div><span class="lbl mpv min-w-[4ch] text-right">70%</span></div></div>
+<div id="mp-yt" aria-hidden="true" class="pointer-events-none fixed -left-[9999px] top-0 h-[200px] w-[200px]"></div></div></div></section>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/ui/PageIntro.astro';
+import LinkCard from '../components/ui/LinkCard.astro';
+import T from '../components/ui/T.astro';
+import ContactForm from '../components/contacto/ContactForm.astro';
+import FaqItem from '../components/contacto/FaqItem.astro';
+import { channels, faq } from '../data/contact';
+---
+<BaseLayout page="contacto">
+  <PageIntro page="contacto" />
+  <section class="cv mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-14 lg:grid-cols-[1.1fr_.9fr]">
+    <ContactForm />
+    <aside class="rv grid content-start gap-8">
+      <div>
+        <h2 class="disp text-4xl"><T es="Otros canales" en="Other channels" /></h2>
+        <ul class="mt-5 grid gap-4">
+          {channels.map((ch) => <li><LinkCard href={ch.href} icon={ch.icon} es={ch.label.es} en={ch.label.en} value={ch.value} /></li>)}
+        </ul>
+      </div>
+      <div x-data="faq()">
+        <h2 class="disp text-4xl"><T es="Preguntas frecuentes" en="FAQ" /></h2>
+        <div class="mt-5 border-2 border-ink">
+          {faq.map((item, i) => <FaqItem q={item.q} a={item.a} index={i} />)}
+        </div>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>

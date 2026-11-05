@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: "Libre Bodoni", serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+.lbl{font:400 11px/1.4 'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+:focus-visible{outline:2px solid #E9E8E3;outline-offset:3px}
+.font-display{font-family:'Libre Bodoni',serif}

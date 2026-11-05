@@ -1,0 +1,15 @@
+---
+import Field from './Field.astro';
+import T from '../ui/T.astro';
+import { topics } from '../../data/contact';
+---
+<div x-data="contactForm()" class="rv">
+<form x-on:submit.prevent="submit()" novalidate class="grid gap-5 border-2 border-ink bg-paper p-6 md:p-8" x-show="!sent" aria-label="Formulario de contacto">
+  <Field id="name" label={{ es: 'Nombre', en: 'Name' }}><input id="name" name="name" type="text" autocomplete="name" class="field" x-model="v.name" x-bind:aria-invalid="e.name ? 'true' : 'false'" x-bind:aria-describedby="e.name ? 'name-err' : null" required></Field>
+  <Field id="email" label={{ es: 'Correo', en: 'Email' }}><input id="email" name="email" type="email" autocomplete="email" class="field" x-model="v.email" x-bind:aria-invalid="e.email ? 'true' : 'false'" x-bind:aria-describedby="e.email ? 'email-err' : null" required></Field>
+  <Field id="topic" label={{ es: 'Asunto', en: 'Subject' }}><select id="topic" name="topic" class="field" x-model="v.topic" x-bind:aria-invalid="e.topic ? 'true' : 'false'" x-bind:aria-describedby="e.topic ? 'topic-err' : null" required><option value="">—</option>{topics.map((t) => <option value={t.value} data-es={t.label.es} data-en={t.label.en}>{t.label.es}</option>)}</select></Field>
+  <Field id="msg" label={{ es: 'Mensaje', en: 'Message' }}><textarea id="msg" name="msg" rows="5" class="field" x-model="v.msg" x-bind:aria-invalid="e.msg ? 'true' : 'false'" x-bind:aria-describedby="e.msg ? 'msg-err' : null" data-ph-es="Cuéntame (mínimo 10 caracteres)" data-ph-en="Tell me (10 characters minimum)" placeholder="Cuéntame (mínimo 10 caracteres)" required></textarea></Field>
+  <button type="submit" class="btn justify-self-start"><T es="Enviar señal" en="Send signal" /> →</button>
+</form>
+<div x-show="sent" x-cloak role="status" class="border-2 border-ink bg-cobalt p-8 text-onblue"><p class="lbl">SIGNAL RECEIVED</p><p class="disp mt-4 text-4xl normal-case italic leading-none"><T es="Mensaje enviado (simulado)" en="Message sent (simulated)" /></p><p class="mt-4"><T es="Esto es una demostración: no se envió nada, pero así se vería la confirmación." en="This is a demo: nothing was sent, but this is what the confirmation would look like." /></p><button type="button" class="btn btn-ghost mt-6" x-on:click="sent = false"><T es="Escribir otro" en="Write another" /></button></div>
+</div>

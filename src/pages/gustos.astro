@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/ui/PageIntro.astro';
+import LikeCard from '../components/gustos/LikeCard.astro';
+import Carousel from '../components/gustos/Carousel.astro';
+import NowPlaying from '../components/gustos/NowPlaying.astro';
+import { likes, slides } from '../data/likes';
+---
+<BaseLayout page="gustos">
+  <PageIntro page="gustos" />
+  <section class="cv mx-auto max-w-6xl px-4 py-14" aria-label="Lista de gustos">
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {likes.map((like) => <LikeCard {...like} />)}
+    </ul>
+  </section>
+  <Carousel slides={slides} />
+  <NowPlaying />
+</BaseLayout>
