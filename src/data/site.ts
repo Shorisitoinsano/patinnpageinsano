@@ -23,7 +23,7 @@ export const pages: Page[] = [
       "es": "Patinn — Illustrator",
       "en": "Patinn — Illustrator"
     },
-    "description": "Página personal de Patinn: ilustradora. Gustos, rutinas y un diario."
+    "description": "Página personal de Patinn: ilustrador. Gustos, rutinas y un diario."
   },
   {
     "key": "sobre-mi",
@@ -36,7 +36,7 @@ export const pages: Page[] = [
       "es": "Sobre mí — Patinn",
       "en": "About me — Patinn"
     },
-    "description": "Quién es Patinn: ilustradora, sus rutinas, su forma de trabajar y su día a día.",
+    "description": "Quién es Patinn: ilustrador, sus rutinas, su forma de trabajar y su día a día.",
     "intro": {
       "signal": "02/05",
       "title": {
